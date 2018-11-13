@@ -14,8 +14,10 @@ namespace StackConsole
             ArrayList listOfArray = new ArrayList { '*', '+', '+', '*', 2.0, 3.0, 10, 4, 2 };
             Stack numStack = new Stack();
 
-            foreach (var item in listOfArray)
-                s.Push(item);
+            // foreach (var item in listOfArray)
+            //     s.Push(item);
+
+            Array.ForEach(listOfArray.ToArray(), s.Push);
 
             foreach (var item in s)
             {
@@ -25,10 +27,9 @@ namespace StackConsole
                     numStack.Push(Convert.ToDecimal(item));
                     Write($"{item} ");
                 }
-                else{
-                    Calculator.Compute((char)item,numStack);
-                }
-                    
+                else
+                    Calculator.Compute((char)item, numStack);
+
             }
             s.Clear();
             WriteLine($"Total is: {numStack.Peek()}");
